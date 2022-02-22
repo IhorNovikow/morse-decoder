@@ -1,4 +1,4 @@
-const MORSE_TABLE = {
+/*const MORSE_TABLE = {
     '.-':     'a',
     '-...':   'b',
     '-.-.':   'c',
@@ -35,10 +35,77 @@ const MORSE_TABLE = {
     '---..':  '8',
     '----.':  '9',
     '-----':  '0',
-};
+};*/
 
-function decode(expr) {
-    // write your solution here
+function decode(num) {
+    const MORSE_TABLE = {
+        'space':  ' ',
+        '.-':     'a',
+        '-...':   'b',
+        '-.-.':   'c',
+        '-..':    'd',
+        '.':      'e',
+        '..-.':   'f',
+        '--.':    'g',
+        '....':   'h',
+        '..':     'i',
+        '.---':   'j',
+        '-.-':    'k',
+        '.-..':   'l',
+        '--':     'm',
+        '-.':     'n',
+        '---':    'o',
+        '.--.':   'p',
+        '--.-':   'q',
+        '.-.':    'r',
+        '...':    's',
+        '-':      't',
+        '..-':    'u',
+        '...-':   'v',
+        '.--':    'w',
+        '-..-':   'x',
+        '-.--':   'y',
+        '--..':   'z',
+        '.----':  '1',
+        '..---':  '2',
+        '...--':  '3',
+        '....-':  '4',
+        '.....':  '5',
+        '-....':  '6',
+        '--...':  '7',
+        '---..':  '8',
+        '----.':  '9',
+        '-----':  '0',
+    };
+    let result=[]
+    let q=0
+    for ( i=10; i<=num.length; i=i+10){
+    let a=num.slice(q,i)
+    a=a.split('')
+    let l=a.length
+    let c=0
+    for (let i=0; i<l; i++){
+    if (a[i]==0){
+     c=c+1
+    }else{
+      break
+    }}
+    a.splice(0,c)
+    l=a.length
+    let arr=[]
+    for (let i=0; i<l-1; i=i+2){
+    if ((a[i]+a[i+1]) == 10){
+    arr.push('.')
+    }else if(a[i]=='*'){
+    arr=['space']
+    }else{
+    arr.push('-')  
+    }}
+    c=arr.join('')
+    result.push(MORSE_TABLE[c])
+    q=q+10
+    }
+    return(result.join(''))
 }
 
 module.exports = {
